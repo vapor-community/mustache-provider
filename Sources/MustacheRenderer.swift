@@ -37,12 +37,7 @@ public class MustacheRenderer: RenderDriver {
 
         let renderer = try repository.template(named: MustacheRenderer.currentName)
 
-        var stringContext: [String: String] = [:]
-        context.forEach { (key, value) in 
-            stringContext[key] = "\(value)"
-        }
-
-        let result = try renderer.render(Box(dictionary: stringContext))
+        let result = try renderer.render(context.mustacheBox)
         return result
     }
 
