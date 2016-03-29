@@ -44,6 +44,8 @@ View.renderers[".mustache"] = VaporZewoMustache.MustacheRenderer()
 
 ## Includes
 
+Includes let you load other mustache templates into your template with a syntax like `{{> header}}`.
+
 To use includes, you must specify them ahead of time to the `MustacheRenderer`.
 
 ### Provider
