@@ -9,6 +9,7 @@ Vapor `RenderDriver` implementation for [Zewo Mustache](https://github.com/Zewo/
 This package includes a Vapor Provider.
 
 ```swift
+import Vapor
 import VaporZewoMustache
 
 let app = Application()
@@ -25,14 +26,13 @@ To add `VaporZewoMustache`, add the following package to your `Package.swift`.
 
 `Package.swift`
 ```swift
-.Package(url: "https://github.com/tannernelson/vapor-zewo-mustache.git", majorVersion: 0, minor: 1)
+.Package(url: "https://github.com/qutheory/vapor-zewo-mustache.git", majorVersion: 0, minor: 1)
 ```
 
 Then set the `MustacheRenderer()` on your `View.renderers` for whatever file extensions you would like to be rendered as `Mustache` templates.
 
 `main.swift`
 ```swift
-import Vapor
 import VaporZewoMustache
 
 //set the mustache renderer
