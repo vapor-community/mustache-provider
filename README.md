@@ -25,7 +25,7 @@ let app = Application()
 
 //routes, etc
 
-app.providers.append(VaporZewoMustache.Provider)
+app.providers.append(VaporZewoMustache.Provider())
 app.start()
 ```
 
@@ -53,10 +53,11 @@ To use includes, you must specify them ahead of time to the `MustacheRenderer`.
 Simply add them as the Provider's `includeFiles`.
 
 ```swift
-VaporZewoMustache.Provider.includeFiles = [
+let provider = VaporZewoMustache.Provider(withIncludes: [
 	"header": "Includes/header.mustache",
 	"footer": "Includes/footer.mustache"
-]
+])
+app.providers.append(provider)
 ```
 
 The path will be appended to `Resources/Views/...` by default.
