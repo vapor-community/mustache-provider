@@ -3,7 +3,7 @@ import Vapor
 public class Provider: Vapor.Provider {
 	public var includeFiles: [String: String]
 
-	init(withIncludes includeFiles: [String: String] = [:]) {
+	public init(withIncludes includeFiles: [String: String] = [:]) {
 		self.includeFiles = includeFiles
 	}
 
