@@ -7,7 +7,7 @@ public class Provider: Vapor.Provider {
 		self.includeFiles = includeFiles
 	}
 
-	public func boot(application: Application) {
+	public func boot(with application: Application) {
 		var files: [String: String] = [:]
 		includeFiles.forEach { (name, file) in
 			files[name] = application.workDir + "Resources/Views/" + file
