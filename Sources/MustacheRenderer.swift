@@ -16,7 +16,7 @@ public class MustacheRenderer: RenderDriver {
 
         for (name, file) in files {
             do {
-                let bytes = try readBytesFromFile(file)
+                let bytes = try readBytesFromFile(path: file)
 
                 var signedData = bytes.map { byte in
                     return Int8(byte)
@@ -30,14 +30,14 @@ public class MustacheRenderer: RenderDriver {
         }
     }
 
-    public func render(template template: String, context: [String: Any]) throws -> String {
+    public func render(template: String, context: [String: Any]) throws -> String {
         var templates = includes
         templates[MustacheRenderer.currentName] = template
         let repository = TemplateRepository(templates: templates)
 
         let renderer = try repository.template(named: MustacheRenderer.currentName)
 
-        let result = try renderer.render(context.mustacheBox)
+        let result = try renderer.render(box: context.mustacheBox)
         return result
     }
 
