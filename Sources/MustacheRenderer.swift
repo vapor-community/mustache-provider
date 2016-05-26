@@ -11,21 +11,26 @@ public class MustacheRenderer: RenderDriver {
     static let currentName = "__current"
 
     public var includes: [String: String]
+
     public init(files: [String: String] = [:]) {
         includes = [:]
 
         for (name, file) in files {
             do {
-                let bytes = try readBytesFromFile(path: file)
+                #if os(Linux)
+                    let bytes = try readBytesFromFile(path: file)
 
-                var signedData = bytes.map { byte in
-                    return Int8(byte)
-                }
+                    var signedData = bytes.map { byte in
+                        return Int8(byte)
+                    }
 
-                signedData.append(0)
-                includes[name] = String(validatingUTF8: signedData)
+                    signedData.append(0)
+                    includes[name] = String(validatingUTF8: signedData)
+                #else
+                    includes[name] = try String(contentsOfFile: file)
+                #endif
             } catch {
-                Log.warning("Could not open file \(file). Error: \(error)")        
+                Log.warning("Could not open file \(file). Error: \(error)")
             }
         }
     }
