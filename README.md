@@ -1,16 +1,16 @@
-# Vapor Zewo Mustache
+# Vapor Mustache
 
-Vapor `RenderDriver` implementation for [Zewo Mustache](https://github.com/Zewo/Mustache).
+Vapor `RenderDriver` implementation for [Mustache](https://github.com/Zewo/Mustache).
 
 ## Installation
 
 ### Package
 
-To add `VaporZewoMustache`, add the following package to your `Package.swift`.
+To add `VaporMustache`, add the following package to your `Package.swift`.
 
 `Package.swift`
 ```swift
-.Package(url: "https://github.com/qutheory/vapor-zewo-mustache.git", majorVersion: 0, minor: 4)
+.Package(url: "https://github.com/qutheory/vapor-mustache.git", majorVersion: 0, minor: 5)
 ```
 
 ### Provider
@@ -19,13 +19,13 @@ This package includes a Vapor Provider which makes it easy to add as a dependenc
 
 ```swift
 import Vapor
-import VaporZewoMustache
+import VaporMustache
 
 let app = Application()
 
 //routes, etc
 
-app.providers.append(VaporZewoMustache.Provider())
+app.providers.append(VaporMustache.Provider())
 app.start()
 ```
 
@@ -35,7 +35,7 @@ If you don't want to use the Provider, set the `MustacheRenderer()` on your `Vie
 
 `main.swift`
 ```swift
-import VaporZewoMustache
+import VaporMustache
 
 //set the mustache renderer
 //for all .mustache files
@@ -53,7 +53,7 @@ To use includes, you must specify them ahead of time to the `MustacheRenderer`.
 Simply add them as the Provider's `includeFiles`.
 
 ```swift
-let provider = VaporZewoMustache.Provider(withIncludes: [
+let provider = VaporMustache.Provider(withIncludes: [
 	"header": "Includes/header.mustache",
 	"footer": "Includes/footer.mustache"
 ])
