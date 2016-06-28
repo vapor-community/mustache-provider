@@ -10,7 +10,7 @@ To add `VaporMustache`, add the following package to your `Package.swift`.
 
 `Package.swift`
 ```swift
-.Package(url: "https://github.com/qutheory/vapor-mustache.git", majorVersion: 0, minor: 5)
+.Package(url: "https://github.com/qutheory/vapor-mustache.git", majorVersion: 0, minor: 8)
 ```
 
 ### Provider
@@ -53,11 +53,12 @@ To use includes, you must specify them ahead of time to the `MustacheRenderer`.
 Simply add them as the Provider's `includeFiles`.
 
 ```swift
-let provider = VaporMustache.Provider(withIncludes: [
+let mustache = VaporMustache.Provider(withIncludes: [
 	"header": "Includes/header.mustache",
 	"footer": "Includes/footer.mustache"
 ])
-app.providers.append(provider)
+
+let app = Application(providers: [mustache])
 ```
 
 The path will be appended to `Resources/Views/...` by default.
