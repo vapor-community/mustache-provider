@@ -4,9 +4,13 @@ import Mustache
 public class MustacheRenderer: RenderDriver {
     static let currentName = "__current"
 
+    public enum Error: ErrorProtocol {
+        case file(String, ErrorProtocol)
+    }
+
     public var includes: [String: String]
 
-    public init(files: [String: String] = [:]) {
+    public init(files: [String: String] = [:]) throws {
         includes = [:]
 
         for (name, file) in files {
@@ -16,7 +20,7 @@ public class MustacheRenderer: RenderDriver {
 
                 includes[name] = String(validatingUTF8: bytes)
             } catch {
-                Log.warning("Could not open file \(file). Error: \(error)")
+                throw Error.file(file, error)
             }
         }
     }

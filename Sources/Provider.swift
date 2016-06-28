@@ -12,8 +12,12 @@ public class Provider: Vapor.Provider {
 		includeFiles.forEach { (name, file) in
 			files[name] = application.workDir + "Resources/Views/" + file
 		}
-		
-		View.renderers[".mustache"] = MustacheRenderer(files: files)
+
+        do {
+            View.renderers[".mustache"] = try MustacheRenderer(files: files)
+        } catch {
+            application.log.error("Could not configure Mustache rendered: \(error)")
+        }
 	}
 
 }
