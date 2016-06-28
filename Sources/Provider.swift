@@ -16,7 +16,7 @@ public class Provider: Vapor.Provider {
         do {
             View.renderers[".mustache"] = try MustacheRenderer(files: files)
         } catch {
-            application.log.error("Could not configure Mustache rendered: \(error)")
+            application.log.error("Could not configure Mustache: \(error)")
         }
 	}
 
