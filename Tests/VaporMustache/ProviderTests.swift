@@ -20,7 +20,7 @@ class ProviderTests: XCTestCase {
         do {
             let view = try app.view("test-view.mustache", context: ["name": name])
 
-            let response = view.makeResponse()
+            let response = view.makeResponse(for: try Request(method: .get, path: "/"))
 
             switch response.body {
             case .data(let bytes):
