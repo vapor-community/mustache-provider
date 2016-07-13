@@ -7,16 +7,16 @@ public class Provider: Vapor.Provider {
 		self.includeFiles = includeFiles
 	}
 
-	public func boot(with application: Application) {
+	public func boot(with drop: Droplet) {
 		var files: [String: String] = [:]
 		includeFiles.forEach { (name, file) in
-			files[name] = application.workDir + "Resources/Views/" + file
+			files[name] = drop.workDir + "Resources/Views/" + file
 		}
 
         do {
             View.renderers[".mustache"] = try MustacheRenderer(files: files)
         } catch {
-            application.log.error("Could not configure Mustache: \(error)")
+            drop.log.error("Could not configure Mustache: \(error)")
         }
 	}
 
