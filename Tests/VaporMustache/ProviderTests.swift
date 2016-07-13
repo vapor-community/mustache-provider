@@ -13,7 +13,7 @@ class ProviderTests: XCTestCase {
             "b": "Includes/test-include-b.mustache",
         ])
 
-        let app = Application(providers: [provider])
+        let app = Droplet(providers: [provider])
 
         let name = "abcdefghijklmnopqrstuvwxyz1234567890!@#$%^*()"
 
