@@ -13,14 +13,13 @@ class ProviderTests: XCTestCase {
             "b": "Includes/test-include-b.mustache",
         ])
 
-        let app = Droplet(providers: [provider])
+        let app = Droplet(initializedProviders: [provider])
 
         let name = "abcdefghijklmnopqrstuvwxyz1234567890!@#$%^*()"
 
         do {
             let view = try app.view("test-view.mustache", context: ["name": name])
-
-            let response = view.makeResponse(for: try Request(method: .get, path: "/"))
+            let response = view.makeResponse()
 
             switch response.body {
             case .data(let bytes):
