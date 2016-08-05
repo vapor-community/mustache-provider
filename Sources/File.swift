@@ -4,7 +4,7 @@
     import Darwin.C
 #endif
 
-enum Error: ErrorProtocol {
+enum Error: Swift.Error {
     case CouldNotOpenFile
     case Unreadable
 }

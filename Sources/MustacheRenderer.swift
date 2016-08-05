@@ -4,8 +4,8 @@ import Mustache
 public class MustacheRenderer: RenderDriver {
     static let currentName = "__current"
 
-    public enum Error: ErrorProtocol {
-        case file(String, ErrorProtocol)
+    public enum Error: Swift.Error {
+        case file(String, Swift.Error)
     }
 
     public var includes: [String: String]
