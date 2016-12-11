@@ -10,7 +10,7 @@ To add `VaporMustache`, add the following package to your `Package.swift`.
 
 `Package.swift`
 ```swift
-.Package(url: "https://github.com/qutheory/vapor-mustache.git", majorVersion: 0, minor: 8)
+.Package(url: "https://github.com/qutheory/vapor-mustache.git", majorVersion: 0, minor: 12)
 ```
 
 ### Provider
